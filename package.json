@@ -17,8 +17,14 @@
     "url": "https://github.com/reactabular/treetabular.git"
   },
   "keywords": [
-    "sort",
-    "sorting"
+    "react",
+    "reactjs",
+    "table",
+    "tables",
+    "reactabular",
+    "tree",
+    "trees",
+    "algorithm"
   ],
   "files": [
     "dist"
