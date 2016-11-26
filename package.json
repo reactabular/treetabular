@@ -27,7 +27,8 @@
     "algorithm"
   ],
   "files": [
-    "dist"
+    "dist",
+    "style.css"
   ],
   "jest": {
     "collectCoverage": true,
