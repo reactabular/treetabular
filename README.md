@@ -1,4 +1,4 @@
-[![build status](https://secure.travis-ci.org/reactabular/treebular.svg)](http://travis-ci.org/reactabular/treetabular) [![bitHound Score](https://www.bithound.io/github/reactabular/treetabular/badges/score.svg)](https://www.bithound.io/github/reactabular/treebular) [![codecov](https://codecov.io/gh/reactabular/treetabular/branch/master/graph/badge.svg)](https://codecov.io/gh/reactabular/treetabular)
+[![build status](https://secure.travis-ci.org/reactabular/treetabular.svg)](http://travis-ci.org/reactabular/treetabular) [![bitHound Score](https://www.bithound.io/github/reactabular/treetabular/badges/score.svg)](https://www.bithound.io/github/reactabular/treetabular) [![codecov](https://codecov.io/gh/reactabular/treetabular/branch/master/graph/badge.svg)](https://codecov.io/gh/reactabular/treetabular)
 
 # Treetabular - Tree utilities
 
