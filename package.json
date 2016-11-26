@@ -1,6 +1,6 @@
 {
   "name": "treebular",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Tree utilities",
   "scripts": {
     "test:all": "npm test && npm run test:lint",
