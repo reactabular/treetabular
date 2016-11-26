@@ -109,7 +109,7 @@ Allows moving tree rows while `retain`ing given fields at their original rows.
 
 Makes it possible to toggle node children through a user interface.
 
-> This depends on [resolve.index](http://reactabular.js.org/#/data/resolving)!
+> This depends on [resolve.index](https://www.npmjs.com/package/table-resolver#resolveindex)!
 
 ## Example
 
@@ -119,7 +119,7 @@ import React from 'react';
 import cloneDeep from 'lodash/cloneDeep';
 import { compose } from 'redux';
 import { Table, resolve } from 'reactabular';
-import * as tree from 'reactabular-tree';
+import * as tree from 'treetabular';
 import VisibilityToggles from 'reactabular-visibility-toggles';
 import * as search from 'searchtabular';
 import * as sort from 'sortabular';
