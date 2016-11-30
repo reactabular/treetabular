@@ -1,5 +1,10 @@
 ## treetabular
 
+1.0.6 / 2016-11-30
+==================
+
+  * Bug fix - Bump `reactabular-dnd` peer dependency range.
+
 1.0.0 / 2016-11-26
 ==================
 
