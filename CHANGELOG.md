@@ -4,6 +4,7 @@
 ==================
 
   * Feature - Add `tree.wrap = ({ operations: [rows => rows], idField = 'id' }) => (rows) => [<operatedRow>]`.
+  * Breaking - `tree.search` does not depend on *selectabular* directly anymore. Instead you have to pass the search `operation` to it. The new signature is `tree.search = ({ operation: (rows) => [<row>], idField = 'id', parentField = 'parent' }) => (rows) => [<searchedRow>]`.
   * Breaking - `tree.sort` has been dropped. Use `tree.wrap` instead. Example:
 
 ```javascript

@@ -1,8 +1,14 @@
+import { multipleColumns } from 'searchtabular';
 import { search } from '../src';
 
 describe('tree.search', function () {
   it('returns empty rows if empty rows are passed', function () {
-    expect(search({ columns: [], query: {} })([])).toEqual([]);
+    expect(search({
+      operation: multipleColumns({
+        columns: [],
+        query: {}
+      })
+    })([])).toEqual([]);
   });
 
   it('returns matching rows', function () {
@@ -20,7 +26,11 @@ describe('tree.search', function () {
       foo: 'bar'
     };
 
-    expect(search({ columns, query })(given)).toEqual(given);
+    expect(
+      search({
+        operation: multipleColumns({ columns, query })
+      })(given)
+    ).toEqual(given);
   });
 
   it('matches children', function () {
@@ -46,7 +56,9 @@ describe('tree.search', function () {
       foo: 'zoo'
     };
 
-    expect(search({ columns, query })(given)).toEqual(given);
+    expect(search({
+      operation: multipleColumns({ columns, query })
+    })(given)).toEqual(given);
   });
 
   it('matches multiple children', function () {
@@ -78,7 +90,9 @@ describe('tree.search', function () {
       foo: 'zoo'
     };
 
-    expect(search({ columns, query })(given)).toEqual(given);
+    expect(search({
+      operation: multipleColumns({ columns, query })
+    })(given)).toEqual(given);
   });
 
   it('returns the same structure with an empty query', function () {
@@ -108,7 +122,9 @@ describe('tree.search', function () {
     ];
     const query = {};
 
-    expect(search({ columns, query })(given)).toEqual(given);
+    expect(search({
+      operation: multipleColumns({ columns, query })
+    })(given)).toEqual(given);
   });
 
   it('returns the same structure with an empty all query', function () {
@@ -140,7 +156,9 @@ describe('tree.search', function () {
       all: ''
     };
 
-    expect(search({ columns, query })(given)).toEqual(given);
+    expect(search({
+      operation: multipleColumns({ columns, query })
+    })(given)).toEqual(given);
   });
 
   it('retains children on match', function () {
@@ -191,6 +209,14 @@ describe('tree.search', function () {
       }
     ];
 
-    expect(search({ columns, query })(given)).toEqual(expected);
+    expect(search({
+      operation: multipleColumns({ columns, query })
+    })(given)).toEqual(expected);
+  });
+
+  /* TODO: test idField/parentField */
+
+  it('throws an error if operation is not passed', function () {
+    expect(search.bind(null, {})).toThrow(Error);
   });
 });

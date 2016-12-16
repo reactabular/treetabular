@@ -77,9 +77,9 @@ Returns parents based on given `rows` and `index`.
 
 Returns a boolean based on whether or not the row at the given `index` has children.
 
-**`tree.search = ({ columns, query, idField = 'id', parentField = 'parent' }) => (rows) => [<searchedRow>]`**
+**`tree.search = ({ operation: (rows) => [<row>], idField = 'id', parentField = 'parent' }) => (rows) => [<searchedRow>]`**
 
-Searches against a tree structure while matching against children too. If children are found, associated parents are returned as well.
+Searches against a tree structure using `operation` while matching against children too. If children are found, associated parents are returned as well. This has been designed to [searchtabular](https://www.npmjs.com/package/searchtabular) `multipleColumns` and `singleColumn`, but as long as the passed operation follows the interface, it should fit in.
 
 > This depends on [resolve.index](https://www.npmjs.com/package/table-resolver#resolveindex)!
 
@@ -261,7 +261,9 @@ class TreeTable extends React.Component {
           })
         ]
       }),
-      tree.search({ columns, query })
+      tree.search({
+        operation: search.multipleColumns({ columns, query })
+      })
     )(this.state.rows);
 
     return (

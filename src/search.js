@@ -1,27 +1,22 @@
 import { uniq } from 'lodash';
-import { multipleColumns } from 'searchtabular';
 import getChildren from './get-children';
 import getParents from './get-parents';
 
 function searchTree({
-  columns,
-  query,
   idField = 'id',
-  parentField = 'parent'
+  parentField = 'parent',
+  operation
 } = {}) {
+  if (!operation) {
+    throw new Error('tree.search - Missing operation!');
+  }
+
   return (rows) => {
     // Track fetched parents to get them into the results only once
     const fetchedParents = {};
 
-    if (!Object.keys(query).length) {
-      return rows;
-    }
-
     return uniq([].concat(
-      ...multipleColumns({
-        columns,
-        query
-      })(rows).map((row) => {
+      ...operation(rows).map((row) => {
         const rowParent = row[parentField];
 
         if (fetchedParents[rowParent]) {
