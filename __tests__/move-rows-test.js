@@ -1,4 +1,5 @@
 import { reverse } from 'lodash';
+import * as dnd from 'reactabular-dnd';
 import { moveRows } from '../src';
 
 describe('tree.moveRows', function () {
@@ -17,8 +18,7 @@ describe('tree.moveRows', function () {
     const targetRowId = 0;
 
     expect(moveRows({
-      sourceRowId,
-      targetRowId
+      operation: dnd.moveRows({ sourceRowId, targetRowId })
     })(rows)).toEqual(rows);
   });
 
@@ -37,8 +37,7 @@ describe('tree.moveRows', function () {
     const targetRowId = 1;
 
     expect(moveRows({
-      sourceRowId,
-      targetRowId
+      operation: dnd.moveRows({ sourceRowId, targetRowId })
     })(rows)).toEqual(reverse(rows));
   });
 
@@ -61,8 +60,7 @@ describe('tree.moveRows', function () {
     const targetRowId = 2;
 
     expect(moveRows({
-      sourceRowId,
-      targetRowId
+      operation: dnd.moveRows({ sourceRowId, targetRowId })
     })(rows)).toEqual([rows[1], rows[2], rows[0]]);
   });
 
@@ -94,8 +92,7 @@ describe('tree.moveRows', function () {
     ];
 
     expect(moveRows({
-      sourceRowId,
-      targetRowId
+      operation: dnd.moveRows({ sourceRowId, targetRowId })
     })(rows)).toEqual(expectedRows);
   });
 
@@ -115,8 +112,7 @@ describe('tree.moveRows', function () {
     const targetRowId = 1;
 
     expect(moveRows({
-      sourceRowId,
-      targetRowId
+      operation: dnd.moveRows({ sourceRowId, targetRowId })
     })(rows)).toEqual(rows);
 
     expect(console.warn).toBeCalled(); // eslint-disable-line no-console
@@ -159,8 +155,7 @@ describe('tree.moveRows', function () {
     ];
 
     expect(moveRows({
-      sourceRowId,
-      targetRowId
+      operation: dnd.moveRows({ sourceRowId, targetRowId })
     })(rows)).toEqual(expectedRows);
   });
 
@@ -203,8 +198,7 @@ describe('tree.moveRows', function () {
     ];
 
     expect(moveRows({
-      sourceRowId,
-      targetRowId
+      operation: dnd.moveRows({ sourceRowId, targetRowId })
     })(rows)).toEqual(expectedRows);
   });
 
@@ -239,8 +233,7 @@ describe('tree.moveRows', function () {
     ];
 
     expect(moveRows({
-      sourceRowId,
-      targetRowId,
+      operation: dnd.moveRows({ sourceRowId, targetRowId }),
       retain: [retainedField]
     })(rows)).toEqual(expectedRows);
   });
@@ -280,8 +273,7 @@ describe('tree.moveRows', function () {
     ];
 
     expect(moveRows({
-      sourceRowId,
-      targetRowId
+      operation: dnd.moveRows({ sourceRowId, targetRowId })
     })(rows)).toEqual(expectedRows);
   });
 
@@ -322,8 +314,7 @@ describe('tree.moveRows', function () {
     ];
 
     expect(moveRows({
-      sourceRowId,
-      targetRowId
+      operation: dnd.moveRows({ sourceRowId, targetRowId })
     })(rows)).toEqual(expectedRows);
   });
 
@@ -374,8 +365,7 @@ describe('tree.moveRows', function () {
     ];
 
     expect(moveRows({
-      sourceRowId,
-      targetRowId
+      operation: dnd.moveRows({ sourceRowId, targetRowId })
     })(rows)).toEqual(expectedRows);
   });
 
@@ -427,8 +417,7 @@ describe('tree.moveRows', function () {
     ];
 
     expect(moveRows({
-      sourceRowId,
-      targetRowId
+      operation: dnd.moveRows({ sourceRowId, targetRowId })
     })(rows)).toEqual(expectedRows);
   });
 
@@ -480,8 +469,7 @@ describe('tree.moveRows', function () {
     ];
 
     expect(moveRows({
-      sourceRowId,
-      targetRowId
+      operation: dnd.moveRows({ sourceRowId, targetRowId })
     })(rows)).toEqual(expectedRows);
   });
 
@@ -543,8 +531,13 @@ describe('tree.moveRows', function () {
     ];
 
     expect(moveRows({
-      sourceRowId,
-      targetRowId
+      operation: dnd.moveRows({ sourceRowId, targetRowId })
     })(rows)).toEqual(expectedRows);
+  });
+
+  /* TODO: test idField/parentField */
+
+  it('throws an error if operation is not passed', function () {
+    expect(moveRows.bind(null, {})).toThrow(Error);
   });
 });

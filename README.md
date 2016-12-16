@@ -113,9 +113,9 @@ Unpacks children from root level nodes. This is useful with sorting and filterin
 
 ### Drag and Drop
 
-**`tree.moveRows = ({ sourceRowId, targetRowId, retain = [], idField = 'id', parentField = 'parent' }) => (rows) => [<movedRow>]`**
+**`tree.moveRows = ({ operation: (rows) => [<row>], retain = [], idField = 'id', parentField = 'parent' }) => (rows) => [<movedRow>]`**
 
-Allows moving tree rows while `retain`ing given fields at their original rows.
+Allows moving tree rows while `retain`ing given fields at their original rows. You should pass an `operation` that performs actual moving here. [reactabular-dnd](https://www.npmjs.com/package/reactabular-dnd) `moveRows` is one option.
 
 ### UI
 

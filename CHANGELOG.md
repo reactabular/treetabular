@@ -4,6 +4,7 @@
 ==================
 
   * Feature - Add `tree.wrap = ({ operations: [rows => rows], idField = 'id' }) => (rows) => [<operatedRow>]`.
+  * Breaking `tree.moveRows` does not depend on *reactabular-dnd* directly anymore. Instead you have to pass the move `operation` to it. The new signature is `tree.moveRows = ({ operation: (rows) => [<row>], retain = [], idField = 'id', parentField = 'parent' }) => (rows) => [<movedRow>]`.
   * Breaking - `tree.search` does not depend on *selectabular* directly anymore. Instead you have to pass the search `operation` to it. The new signature is `tree.search = ({ operation: (rows) => [<row>], idField = 'id', parentField = 'parent' }) => (rows) => [<searchedRow>]`.
   * Breaking - `tree.sort` has been dropped. Use `tree.wrap` instead. Example:
 
