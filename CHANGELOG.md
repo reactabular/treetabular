@@ -1,5 +1,23 @@
 ## treetabular
 
+2.0.0 / 2016-12-16
+==================
+
+  * Feature - Add `tree.wrap = ({ operations: [rows => rows], idField = 'id' }) => (rows) => [<operatedRow>]`.
+  * Breaking - `tree.sort` has been dropped. Use `tree.wrap` instead. Example:
+
+```javascript
+wrap({
+  operations: [
+    sorter({
+      columns,
+      sortingColumns,
+      sort: orderBy
+    })
+  ]
+})(rows);
+```
+
 1.0.6 / 2016-11-30
 ==================
 

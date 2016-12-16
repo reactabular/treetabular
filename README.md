@@ -83,9 +83,23 @@ Searches against a tree structure while matching against children too. If childr
 
 > This depends on [resolve.index](https://www.npmjs.com/package/table-resolver#resolveindex)!
 
-**`tree.sort = ({ columns, sortingColumns, strategy, idField = 'id' }) => (rows) => [<sortedRow>]`**
+**`tree.wrap = ({ operations: [rows => rows], idField = 'id' }) => (rows) => [<operatedRow>]`**
 
-Sorts a tree (packs/unpacks internally to maintain root level sorting).
+If you want to perform an operation, such as sorting, against the root rows of a tree, use `tree.wrap`.
+
+**Example:**
+
+```javascript
+wrap({
+  operations: [
+    sorter({
+      columns,
+      sortingColumns,
+      sort: orderBy
+    })
+  ]
+})(rows);
+```
 
 ### Packing
 
@@ -239,9 +253,13 @@ class TreeTable extends React.Component {
     const visibleColumns = columns.filter(column => column.visible);
     const rows = compose(
       tree.filter({ fieldName: 'showingChildren' }),
-      tree.sort({
-        columns,
-        sortingColumns
+      tree.wrap({
+        operations: [
+          sort.sorter({
+            columns,
+            sortingColumns
+          })
+        ]
       }),
       tree.search({ columns, query })
     )(this.state.rows);

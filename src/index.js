@@ -7,7 +7,7 @@ export { default as hasChildren } from './has-children';
 export { default as moveRows } from './move-rows';
 export { default as pack } from './pack';
 export { default as unpack } from './unpack';
-export { default as sort } from './sort';
+export { default as wrap } from './wrap';
 export { default as search } from './search';
 export { default as toggleChildren } from './toggle-children';
 export { default as collapseAll } from './collapse-all';

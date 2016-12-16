@@ -1,8 +1,18 @@
-import { sort } from '../src';
+import { sorter } from 'sortabular';
+import { orderBy } from 'lodash';
+import { wrap } from '../src';
 
-describe('tree.sort', function () {
+describe('tree.wrap', function () {
   it('returns empty rows if empty rows are passed', function () {
-    expect(sort({ columns: [], query: {} })([])).toEqual([]);
+    expect(wrap({
+      operations: [
+        sorter({
+          columns: [],
+          sortingColumns: {},
+          sort: orderBy
+        })
+      ]
+    })([])).toEqual([]);
   });
 
   it('returns sorted rows', function () {
@@ -34,7 +44,15 @@ describe('tree.sort', function () {
       }
     ];
 
-    expect(sort({ columns, sortingColumns })(given)).toEqual(expected);
+    expect(wrap({
+      operations: [
+        sorter({
+          columns,
+          sortingColumns,
+          sort: orderBy
+        })
+      ]
+    })(given)).toEqual(expected);
   });
 
   it('accepts custom id', function () {
@@ -70,10 +88,19 @@ describe('tree.sort', function () {
       }
     ];
 
-    expect(sort({
-      columns,
-      sortingColumns,
-      idField: 'Id'
+    expect(wrap({
+      idField: 'Id',
+      operations: [
+        sorter({
+          columns,
+          sortingColumns,
+          sort: orderBy
+        })
+      ]
     })(given)).toEqual(expected);
+  });
+
+  it('throws an error if operations are not passed', function () {
+    expect(wrap.bind(null, {})).toThrow(Error);
   });
 });
