@@ -309,7 +309,7 @@ class TreeTable extends React.Component {
       rows: tree.collapseAll()(this.state.rows)
     });
   }
-  onToggleColumn(columnIndex) {
+  onToggleColumn({ columnIndex }) {
     const columns = cloneDeep(this.state.columns);
 
     columns[columnIndex].visible = !columns[columnIndex].visible;
