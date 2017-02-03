@@ -2,7 +2,9 @@
 
 # Treetabular - Tree utilities
 
-`treetabular` provides tree helpers for Reactabular. It relies on a flat structure like this:
+`treetabular` provides tree helpers for Reactabular. It allows you to set up collapsible rows that can contain more collapsible ones while remaining within a table format.
+
+To achieve this, `treetabular` relies on a flat structure that contains the hierarchy:
 
 ```javascript
 const tree = [
