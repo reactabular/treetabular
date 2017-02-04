@@ -1,9 +1,7 @@
+import { cloneDeep, reverse } from 'lodash';
 import { fixOrder } from '../src';
 
-import { cloneDeep, reverse } from 'lodash';
-
 describe('fixOrder', () => {
-
   it('works with empty array', () => {
     expect(fixOrder()([])).toEqual([]);
   });
@@ -16,7 +14,7 @@ describe('fixOrder', () => {
     const dummyRows = [
       {
         name: 'A',
-        id:1
+        id: 1
       },
       {
         name: 'B',
@@ -27,7 +25,7 @@ describe('fixOrder', () => {
     expect(fixOrder()(dummyRows)).toEqual(dummyRows);
   });
 
-  it ('works with rows with children in right order', () => {
+  it('works with rows with children in right order', () => {
     const dummyRows = [
       {
         name: 'parent',
@@ -45,7 +43,7 @@ describe('fixOrder', () => {
     expect(fixOrder()(dummyRows)).toEqual(dummyRows);
   });
 
-  it ('works with simple case of wrong order', () => {
+  it('works with simple case of wrong order', () => {
     const rowsWithWrongOrder = [
       {
         name: 'parent',
@@ -78,7 +76,7 @@ describe('fixOrder', () => {
   });
 
 
-  it ('works when id is equal to zero', () => {
+  it('works when id is equal to zero', () => {
     const rowsWithWrongOrder = [
       {
         name: 'parent',
@@ -110,13 +108,13 @@ describe('fixOrder', () => {
       },
       {
         name: 'another one2'
-      },
+      }
     ];
 
     expect(fixOrder()(rowsWithWrongOrder)).toEqual(expectedRows);
   });
 
-  it ('works when parent is set to null', () => {
+  it('works when parent is set to null', () => {
     const rowsWithNullParent = [
       {
         name: 'something'
@@ -158,7 +156,7 @@ describe('fixOrder', () => {
     expect(fixOrder()(rowsWithNullParent)).toEqual(expected);
   });
 
-  it ('works when id set to null', () => {
+  it('works when id set to null', () => {
     const rowsWithIdNull = [
       {
         id: null
@@ -174,7 +172,7 @@ describe('fixOrder', () => {
     expect(fixOrder()(rowsWithIdNull)).toEqual(rowsWithIdNull);
   });
 
-  it ('works when parent id points to non existing element', () => {
+  it('works when parent id points to non existing element', () => {
     const rowsWithInvalidParentId = [
       {
         id: 2
@@ -189,7 +187,7 @@ describe('fixOrder', () => {
     expect(fixOrder()(rowsWithInvalidParentId)).toEqual(rowsWithInvalidParentId);
   });
 
-  it ('works with multiple parents', () => {
+  it('works with multiple parents', () => {
     const rowsWithMultipleParents = [
       {
         name: 'parent1',
@@ -265,7 +263,7 @@ describe('fixOrder', () => {
         name: 'something else'
       },
       {
-        id: 0,
+        id: 0
       },
       {
         name: 'something else2'
@@ -290,7 +288,7 @@ describe('fixOrder', () => {
         name: 'something else'
       },
       {
-        id: 0,
+        id: 0
       },
       {
         parent: 0,
@@ -313,7 +311,7 @@ describe('fixOrder', () => {
     expect(fixOrder()(rowsWithNestedChildren)).toEqual(expectedOrder);
   });
 
-  it ('works with complex example', () => {
+  it('works with complex example', () => {
     const complexRows = [
       {
         name: 'a'
@@ -416,13 +414,13 @@ describe('fixOrder', () => {
       },
       {
         name: 'g'
-      },
+      }
     ];
 
     expect(fixOrder()(complexRows)).toEqual(expectedRows);
   });
 
-  it ('allows to have custom parent and id fields', () => {
+  it('allows to have custom parent and id fields', () => {
     const customFieldsRows = [
       {
         name: 'something'
@@ -450,7 +448,7 @@ describe('fixOrder', () => {
       },
       {
         name: 'something else'
-      },
+      }
     ];
 
     expect(fixOrder({
@@ -487,7 +485,7 @@ describe('fixOrder', () => {
     expect(fixOrder()(stringIdsRows)).toEqual(expected);
   });
 
-  it ('does not mutate parameter', () => {
+  it('does not mutate parameter', () => {
     const rowsWithWrongOrder = [
       {
         name: 'parent',
