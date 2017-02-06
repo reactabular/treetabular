@@ -35,7 +35,7 @@ const toggleChildren = ({
     const rows = getRows();
     const showingChildren = getShowingChildren(extra);
     const index = rowData._index;
-    const containsChildren = hasChildren({ index, idField })(rows) ? 'has-children' : '';
+    const containsChildren = hasChildren({ index, idField, parentField })(rows) ? 'has-children' : '';
     const level = getLevel({ index, parentField })(rows);
     const hasParent = level > 0 ? 'has-parent' : '';
 
