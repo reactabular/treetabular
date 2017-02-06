@@ -131,7 +131,8 @@ Makes it possible to toggle node children through a user interface.
 
 **`tree.fixOrder = ({ parentField = 'parent', idField = 'id' }) => (rows) => [<rows in correct order>]`**
 
-If children in your rows don't follow their parents you can use that helper method so they will be moved into right place. 
+If children in your rows don't follow their parents you can use that helper method so they will be moved into right place.
+
 Basically it converts `[ parent, x, y, z, children ]` into `[ parent, children, x, y, z ]`.
 
 ## Example
