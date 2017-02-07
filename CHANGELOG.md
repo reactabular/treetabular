@@ -1,5 +1,10 @@
 ## treetabular
 
+2.1.0 / 2017-02-06
+==================
+
+  * Feature - Add `tree.fixOrder` - If children in your rows don't follow their parents you can use that helper method so they will be moved into right place. #2
+
 2.0.2 / 2017-02-03
 ==================
 

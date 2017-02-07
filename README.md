@@ -29,7 +29,7 @@ const tree = [
 ];
 ```
 
-If there's a `parent` relation, the children must follow their parent right after it.
+If there's a `parent` relation, the children must follow their parent right after it (you might use `fixOrder` helper function if your data does not meet that criteria).
 
 > You can find suggested default styling for the package at `style.css` in the package root.
 
@@ -126,6 +126,14 @@ Allows moving tree rows while `retain`ing given fields at their original rows. Y
 Makes it possible to toggle node children through a user interface.
 
 > This depends on [resolve.index](https://www.npmjs.com/package/table-resolver#resolveindex)!
+
+### Helpers
+
+**`tree.fixOrder = ({ parentField = 'parent', idField = 'id' }) => (rows) => [<rows in correct order>]`**
+
+If children in your rows don't follow their parents you can use that helper method so they will be moved into right place.
+
+Basically it converts `[ parent, x, y, z, children ]` into `[ parent, children, x, y, z ]`.
 
 ## Example
 
