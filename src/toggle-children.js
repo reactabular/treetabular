@@ -46,7 +46,7 @@ const toggleChildren = ({
         // since toggling with a click makes it difficult to select each item.
         onDoubleClick={e => {
           toggle(e, index);
-          window.getSelection().removeAllRanges();
+          window.getSelection && window.getSelection().removeAllRanges();
         }}
         className={`${containsChildren} ${hasParent} ${className || ''}`}
         {...restProps}
