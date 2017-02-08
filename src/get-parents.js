@@ -16,14 +16,11 @@ function getParents({
     }
 
     while (cell) {
-
       if (typeof searchingParent === 'undefined') {
         searchingParent = cell[parentField];
-      } else {
-        if (searchingParent === cell[idField]) {
-          parents.unshift(cell);
-          searchingParent = cell[parentField];
-        }
+      } else if (searchingParent === cell[idField]) {
+        parents.unshift(cell);
+        searchingParent = cell[parentField];
       }
 
       if (cell[parentField] === null) {

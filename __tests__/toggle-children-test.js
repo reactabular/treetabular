@@ -1,44 +1,43 @@
 import { cloneDeep } from 'lodash';
-import React from 'react';
-
 import { toggleChildren } from '../src';
+
 const dummyRows = [
   {
-    "id": "MNU00900",
-    "parent": null,
-    "name": "Configuration",
+    id: 'MNU00900',
+    parent: null,
+    name: 'Configuration'
   },
   {
-    "id": "MNU00901",
-    "parent": "MNU00900",
-    "name": "UserMangement",
+    id: 'MNU00901',
+    parent: 'MNU00900',
+    name: 'UserMangement'
   },
   {
-    "id": "MNU00902",
-    "parent": "MNU00900",
-    "name": "MenuMangement",
+    id: 'MNU00902',
+    parent: 'MNU00900',
+    name: 'MenuMangement'
   },
   {
-    "id": "MNU00904",
-    "parent": "MNU00902",
-    "name": "TEST",
+    id: 'MNU00904',
+    parent: 'MNU00902',
+    name: 'TEST'
   },
   {
-    "id": "MNU00803",
-    "parent": "MNU00900",
-    "name": "RoleMangement",
+    id: 'MNU00803',
+    parent: 'MNU00900',
+    name: 'RoleMangement'
   },
   {
-    "id": "MNU00905",
-    "parent": "MNU00803",
-    "name": "TEST",
+    id: 'MNU00905',
+    parent: 'MNU00803',
+    name: 'TEST'
   }
 ];
 
 const initializer = {
   getRows: () => dummyRows,
   getShowingChildren: ({ rowData }) => rowData.showingChildren,
-  toggleShowingChildren: rowIndex => {
+  toggleShowingChildren: (rowIndex) => {
     const rows = cloneDeep(dummyRows);
     rows[rowIndex].showingChildren = !rows[rowIndex].showingChildren;
   },
@@ -53,7 +52,7 @@ describe('tree.toggleChildren', function () {
       rowIndex: 0,
       rowData: {
         _index: 0,
-        id: "MNU00900",
+        id: 'MNU00900',
         parentId: null
       }
     };
@@ -67,7 +66,7 @@ describe('tree.toggleChildren', function () {
       rowIndex: 0,
       rowData: {
         _index: 0,
-        id: "MNU00900",
+        id: 'MNU00900',
         parentId: null
       }
     };
@@ -83,7 +82,7 @@ describe('tree.toggleChildren', function () {
       rowIndex: 0,
       rowData: {
         _index: 0,
-        id: "MNU00900",
+        id: 'MNU00900',
         parentId: null
       }
     };
@@ -94,14 +93,18 @@ describe('tree.toggleChildren', function () {
   });
 
   it('throw missing getRows error if it missed', function () {
-    expect(toggleChildren.bind(null, {getShowingChildren: ()=>{}, toggleShowingChildren: ()=>{}})).toThrow(Error);
+    expect(toggleChildren
+      .bind(null, { getShowingChildren: () => {}, toggleShowingChildren: () => {} }))
+      .toThrow(Error);
   });
 
   it('throw missing getShowingChildren error if it missed', function () {
-    expect(toggleChildren.bind(null, {getRows: ()=>{}, toggleShowingChildren: ()=>{}})).toThrow(Error);
+    expect(toggleChildren.bind(null, { getRows: () => {}, toggleShowingChildren: () => {} }))
+      .toThrow(Error);
   });
 
   it('throw missing toggleShowingChildren error if it missed', function () {
-    expect(toggleChildren.bind(null, {getRows: ()=>{}, getShowingChildren: ()=>{}})).toThrow(Error);
+    expect(toggleChildren.bind(null, { getRows: () => {}, getShowingChildren: () => {} }))
+      .toThrow(Error);
   });
 });

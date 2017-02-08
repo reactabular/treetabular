@@ -44,7 +44,7 @@ const toggleChildren = ({
         style={{ paddingLeft: `${level}em` }}
         // toggling children with a doubleClick would provide better UX
         // since toggling with a click makes it difficult to select each item.
-        onDoubleClick={e => {
+        onDoubleClick={(e) => {
           toggle(e, index);
           window.getSelection && window.getSelection().removeAllRanges();
         }}
