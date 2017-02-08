@@ -53,13 +53,13 @@ Collapses rows by setting `showingChildren` of each row to `false`.
 
 Expands rows by setting `showingChildren` of each row to `true`.
 
-**`tree.filter = ({ fieldName, parentField = 'parent' }) => (rows) => [<filteredRow>]`**
+**`tree.filter = ({ fieldName, idField = 'parentId', parentField = 'parent' }) => (rows) => [<filteredRow>]`**
 
 Filters the given rows using `fieldName`. This is handy if you want only rows that are visible assuming visibility logic has been defined.
 
 ### Queries
 
-**`tree.getLevel = ({ index, parentField = 'parent' }) => (rows) => <level>`**
+**`tree.getLevel = ({ index, idField = 'parentId', parentField = 'parent' }) => (rows) => <level>`**
 
 Returns the nesting level of the row at the given `index` within `rows`.
 
@@ -71,7 +71,7 @@ Returns children based on given `rows` and `index`. This includes children of ch
 
 Returns immediate children based on given `rows` and `index`.
 
-**`tree.getParents = ({ index, parentField = 'parent' }) => (rows) => [<parent>]`**
+**`tree.getParents = ({ index, idField = 'parentId', parentField = 'parent' }) => (rows) => [<parent>]`**
 
 Returns parents based on given `rows` and `index`.
 
@@ -121,7 +121,7 @@ Allows moving tree rows while `retain`ing given fields at their original rows. Y
 
 ### UI
 
-**`tree.toggleChildren = ({ getRows, getShowingChildren, toggleShowingChildren, props, idField, parentField }) => (value, extra) => <React element>`**
+**`tree.toggleChildren = ({ getRows, getShowingChildren, toggleShowingChildren, props, idField = 'id', parentField }) => (value, extra) => <React element>`**
 
 Makes it possible to toggle node children through a user interface.
 

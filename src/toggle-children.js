@@ -7,7 +7,7 @@ const toggleChildren = ({
   getShowingChildren,
   toggleShowingChildren,
   props,
-  idField,
+  idField = 'id',
   parentField
 } = {}) => {
   if (!getRows) {
@@ -31,18 +31,23 @@ const toggleChildren = ({
 
   return (value, extra) => {
     const { className, ...restProps } = props || {}; // eslint-disable-line react/prop-types
-    const { rowData } = extra;
     const rows = getRows();
     const showingChildren = getShowingChildren(extra);
-    const index = rowData._index;
+    // index must be the index of original rows, but filtered rows
+    const index = rows.findIndex(row => row[idField] === value);
     const containsChildren = hasChildren({ index, idField, parentField })(rows) ? 'has-children' : '';
-    const level = getLevel({ index, parentField })(rows);
+    const level = getLevel({ index, idField, parentField })(rows);
     const hasParent = level > 0 ? 'has-parent' : '';
 
     return (
       <div
         style={{ paddingLeft: `${level}em` }}
-        onClick={e => toggle(e, index)}
+        // toggling children with a doubleClick would provide better UX
+        // since toggling with a click makes it difficult to select each item.
+        onDoubleClick={e => {
+          toggle(e, index);
+          window.getSelection().removeAllRanges();
+        }}
         className={`${containsChildren} ${hasParent} ${className || ''}`}
         {...restProps}
       >

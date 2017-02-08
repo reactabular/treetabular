@@ -26,7 +26,7 @@ function searchTree({
         fetchedParents[rowParent] = true;
 
         const children = getChildren({ index: row._index, idField, parentField })(rows);
-        const parents = getParents({ index: row._index, parentField })(rows);
+        const parents = getParents({ index: row._index, idField, parentField })(rows);
 
         return parents.concat(row).concat(children);
       }).filter(a => a)

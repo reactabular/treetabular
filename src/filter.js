@@ -2,6 +2,7 @@ import getParents from './get-parents';
 
 const filterTree = ({
   fieldName,
+  idField = 'id',
   parentField = 'parent'
 } = {}) => (rows) => {
   if (!fieldName) {
@@ -13,7 +14,7 @@ const filterTree = ({
       return true;
     }
 
-    const parents = getParents({ index, parentField })(rows);
+    const parents = getParents({ index, idField, parentField })(rows);
 
     return parents.filter(
       parent => parent[fieldName]

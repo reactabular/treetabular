@@ -22,13 +22,13 @@ describe('tree.getLevel', function () {
         foo: 'bar'
       },
       {
-        parent: 'baz',
+        parent: 'bar',
         foo: 'foo'
       }
     ];
     const expected = 1;
 
-    expect(getLevel({ index: 1 })(given)).toEqual(expected);
+    expect(getLevel({ index: 1, idField: 'foo' })(given)).toEqual(expected);
   });
 
   it('returns one if there is one parent and parent has null parent', function () {
@@ -38,13 +38,13 @@ describe('tree.getLevel', function () {
         foo: 'bar'
       },
       {
-        parent: 'baz',
+        parent: 'bar',
         foo: 'foo'
       }
     ];
     const expected = 1;
 
-    expect(getLevel({ index: 1 })(given)).toEqual(expected);
+    expect(getLevel({ index: 1, idField: 'foo' })(given)).toEqual(expected);
   });
 
   it('works with sibling children', function () {
@@ -53,17 +53,17 @@ describe('tree.getLevel', function () {
         foo: 'bar'
       },
       {
-        parent: 'baz',
+        parent: 'bar',
         foo: 'foo'
       },
       {
-        parent: 'baz',
+        parent: 'bar',
         foo: 'barbar'
       }
     ];
     const expected = 1;
 
-    expect(getLevel({ index: 2 })(given)).toEqual(expected);
+    expect(getLevel({ index: 2, idField: 'foo' })(given)).toEqual(expected);
   });
 
   it('works with preceding parent', function () {
@@ -72,7 +72,7 @@ describe('tree.getLevel', function () {
         foo: 'bar'
       },
       {
-        parent: 'baz',
+        parent: 'bar',
         foo: 'foo'
       },
       {
@@ -81,7 +81,7 @@ describe('tree.getLevel', function () {
     ];
     const expected = 0;
 
-    expect(getLevel({ index: 2 })(given)).toEqual(expected);
+    expect(getLevel({ index: 2, idField: 'foo' })(given)).toEqual(expected);
   });
 
   it('works with preceding parent if own parent is null', function () {
@@ -90,7 +90,7 @@ describe('tree.getLevel', function () {
         foo: 'bar'
       },
       {
-        parent: 'baz',
+        parent: 'bar',
         foo: 'foo'
       },
       {
@@ -100,7 +100,7 @@ describe('tree.getLevel', function () {
     ];
     const expected = 0;
 
-    expect(getLevel({ index: 2 })(given)).toEqual(expected);
+    expect(getLevel({ index: 2, idField: 'foo' })(given)).toEqual(expected);
   });
 
   it('works with sibling children without parents', function () {
@@ -114,7 +114,7 @@ describe('tree.getLevel', function () {
     ];
     const expected = 0;
 
-    expect(getLevel({ index: 1 })(given)).toEqual(expected);
+    expect(getLevel({ index: 1, idField: 'foo' })(given)).toEqual(expected);
   });
 
   it('works with sibling children when parent is set to null', function () {
@@ -130,7 +130,7 @@ describe('tree.getLevel', function () {
     ];
     const expected = 0;
 
-    expect(getLevel({ index: 1 })(given)).toEqual(expected);
+    expect(getLevel({ index: 1, idField: 'foo' })(given)).toEqual(expected);
   });
 
   it('works with nested children', function () {
@@ -139,7 +139,7 @@ describe('tree.getLevel', function () {
         foo: 'bar'
       },
       {
-        parent: 'baz',
+        parent: 'bar',
         foo: 'foo'
       },
       {
@@ -149,7 +149,7 @@ describe('tree.getLevel', function () {
     ];
     const expected = 2;
 
-    expect(getLevel({ index: 2 })(given)).toEqual(expected);
+    expect(getLevel({ index: 2, idField: 'foo' })(given)).toEqual(expected);
   });
 
   it('allows parent field to be customized', function () {
@@ -159,7 +159,7 @@ describe('tree.getLevel', function () {
         foo: 'bar'
       },
       {
-        [parentField]: 'baz',
+        [parentField]: 'bar',
         foo: 'foo'
       },
       {
@@ -169,6 +169,6 @@ describe('tree.getLevel', function () {
     ];
     const expected = 2;
 
-    expect(getLevel({ index: 2, parentField })(given)).toEqual(expected);
+    expect(getLevel({ index: 2, idField: 'foo', parentField })(given)).toEqual(expected);
   });
 });

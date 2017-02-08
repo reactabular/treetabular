@@ -16,13 +16,29 @@ describe('tree.getParents', function () {
     expect(getParents({ index: 0 })(given)).toEqual(expected);
   });
 
+  it('returns an empty array if there are no matching parents', function () {
+    const given = [
+      {
+        parent: null,
+        foo: 'bar'
+      },
+      {
+        parent: 'baz',
+        foo: 'foo'
+      }
+    ];
+    const expected = [];
+
+    expect(getParents({ index: 1, idField: 'foo' })(given)).toEqual(expected);
+  });
+
   it('returns an array with parent if there is one parent', function () {
     const given = [
       {
         foo: 'bar'
       },
       {
-        parent: 'baz',
+        parent: 'bar',
         foo: 'foo'
       }
     ];
@@ -32,7 +48,7 @@ describe('tree.getParents', function () {
       }
     ];
 
-    expect(getParents({ index: 1 })(given)).toEqual(expected);
+    expect(getParents({ index: 1, idField: 'foo' })(given)).toEqual(expected);
   });
 
   it('returns an array with parent if there is one parent and parent has null parent', function () {
@@ -42,7 +58,7 @@ describe('tree.getParents', function () {
         foo: 'bar'
       },
       {
-        parent: 'baz',
+        parent: 'bar',
         foo: 'foo'
       }
     ];
@@ -53,7 +69,7 @@ describe('tree.getParents', function () {
       }
     ];
 
-    expect(getParents({ index: 1 })(given)).toEqual(expected);
+    expect(getParents({ index: 1, idField: 'foo' })(given)).toEqual(expected);
   });
 
   it('works with sibling children', function () {
@@ -62,11 +78,11 @@ describe('tree.getParents', function () {
         foo: 'bar'
       },
       {
-        parent: 'baz',
+        parent: 'bar',
         foo: 'foo'
       },
       {
-        parent: 'baz',
+        parent: 'bar',
         foo: 'barbar'
       }
     ];
@@ -76,7 +92,7 @@ describe('tree.getParents', function () {
       }
     ];
 
-    expect(getParents({ index: 2 })(given)).toEqual(expected);
+    expect(getParents({ index: 2, idField: 'foo' })(given)).toEqual(expected);
   });
 
   it('works with preceding parent', function () {
@@ -85,7 +101,7 @@ describe('tree.getParents', function () {
         foo: 'bar'
       },
       {
-        parent: 'baz',
+        parent: 'bar',
         foo: 'foo'
       },
       {
@@ -94,7 +110,7 @@ describe('tree.getParents', function () {
     ];
     const expected = [];
 
-    expect(getParents({ index: 2 })(given)).toEqual(expected);
+    expect(getParents({ index: 2, idField: 'foo' })(given)).toEqual(expected);
   });
 
   it('works with preceding parent if own parent is null', function () {
@@ -103,7 +119,7 @@ describe('tree.getParents', function () {
         foo: 'bar'
       },
       {
-        parent: 'baz',
+        parent: 'bar',
         foo: 'foo'
       },
       {
@@ -113,7 +129,7 @@ describe('tree.getParents', function () {
     ];
     const expected = [];
 
-    expect(getParents({ index: 2 })(given)).toEqual(expected);
+    expect(getParents({ index: 2, idField: 'foo' })(given)).toEqual(expected);
   });
 
   it('works with sibling children without parents', function () {
@@ -127,7 +143,7 @@ describe('tree.getParents', function () {
     ];
     const expected = [];
 
-    expect(getParents({ index: 1 })(given)).toEqual(expected);
+    expect(getParents({ index: 1, idField: 'foo' })(given)).toEqual(expected);
   });
 
   it('works with sibling children when parent is set to null', function () {
@@ -152,7 +168,7 @@ describe('tree.getParents', function () {
         foo: 'bar'
       },
       {
-        parent: 'baz',
+        parent: 'bar',
         foo: 'foo'
       },
       {
@@ -165,12 +181,12 @@ describe('tree.getParents', function () {
         foo: 'bar'
       },
       {
-        parent: 'baz',
+        parent: 'bar',
         foo: 'foo'
       }
     ];
 
-    expect(getParents({ index: 2 })(given)).toEqual(expected);
+    expect(getParents({ index: 2, idField: 'foo' })(given)).toEqual(expected);
   });
 
   it('allows parent field to be customized', function () {
@@ -180,7 +196,7 @@ describe('tree.getParents', function () {
         foo: 'bar'
       },
       {
-        [parentField]: 'baz',
+        [parentField]: 'bar',
         foo: 'foo'
       },
       {
@@ -193,11 +209,11 @@ describe('tree.getParents', function () {
         foo: 'bar'
       },
       {
-        [parentField]: 'baz',
+        [parentField]: 'bar',
         foo: 'foo'
       }
     ];
 
-    expect(getParents({ index: 2, parentField })(given)).toEqual(expected);
+    expect(getParents({ index: 2, idField: 'foo', parentField })(given)).toEqual(expected);
   });
 });
