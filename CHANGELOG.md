@@ -1,5 +1,10 @@
 ## treetabular
 
+3.1.0 / 2017-02-09
+==================
+
+  * Feature - Expose `tree.toggleChildren` indexing through a `getIndex` callback. It looks into `rowData._index` by default.
+
 3.0.1 / 2017-02-09
 ==================
 

@@ -3,6 +3,7 @@ import getLevel from './get-level';
 import hasChildren from './has-children';
 
 const toggleChildren = ({
+  getIndex = rowData => rowData._index, // Look for index based on convention
   getRows,
   getShowingChildren,
   toggleShowingChildren,
@@ -33,8 +34,7 @@ const toggleChildren = ({
     const { className, ...restProps } = props || {}; // eslint-disable-line react/prop-types
     const rows = getRows();
     const showingChildren = getShowingChildren(extra);
-    // index must be the index of original rows, but filtered rows
-    const index = rows.findIndex(row => row[idField] === value);
+    const index = getIndex(extra.rowData);
     const containsChildren = hasChildren({ index, idField, parentField })(rows) ? 'has-children' : '';
     const level = getLevel({ index, idField, parentField })(rows);
     const hasParent = level > 0 ? 'has-parent' : '';

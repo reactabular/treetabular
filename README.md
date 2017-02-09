@@ -121,11 +121,11 @@ Allows moving tree rows while `retain`ing given fields at their original rows. Y
 
 ### UI
 
-**`tree.toggleChildren = ({ getRows, getShowingChildren, toggleShowingChildren, props, idField = 'id', parentField }) => (value, extra) => <React element>`**
+**`tree.toggleChildren = ({ getIndex, getRows, getShowingChildren, toggleShowingChildren, props, idField = 'id', parentField }) => (value, extra) => <React element>`**
 
 Makes it possible to toggle node children through a user interface.
 
-> This depends on [resolve.index](https://www.npmjs.com/package/table-resolver#resolveindex)!
+The default implementation of `getIndex(rowData)` depends on [resolve.index](https://www.npmjs.com/package/table-resolver#resolveindex) as it looks for index of the row to toggle based on that. This can be customized through.
 
 ### Helpers
 
