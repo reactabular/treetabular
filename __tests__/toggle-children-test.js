@@ -10,12 +10,12 @@ const dummyRows = [
   {
     id: 'MNU00901',
     parent: 'MNU00900',
-    name: 'UserMangement'
+    name: 'UserManagement'
   },
   {
     id: 'MNU00902',
     parent: 'MNU00900',
-    name: 'MenuMangement'
+    name: 'MenuManagement'
   },
   {
     id: 'MNU00904',
@@ -25,7 +25,7 @@ const dummyRows = [
   {
     id: 'MNU00803',
     parent: 'MNU00900',
-    name: 'RoleMangement'
+    name: 'RoleManagement'
   },
   {
     id: 'MNU00905',
