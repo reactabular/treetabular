@@ -1,5 +1,11 @@
 ## treetabular
 
+3.0.0 / 2017-02-09
+==================
+
+  * Breaking fix - Allow children that have sub-children to be displayed. #4
+  * Fix - Allow `tree.hasChildren` to receive `parentField`. #4
+
 2.1.0 / 2017-02-06
 ==================
 
