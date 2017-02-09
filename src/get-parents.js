@@ -1,44 +1,33 @@
+import _ from 'lodash';
+
 function getParents({
   index,
+  idField = 'id',
   parentField = 'parent'
 } = {}) {
   return (rows) => {
     const parents = [];
     let currentIndex = index;
     let cell = rows[index];
-    let previousParent;
+    let searchingParent;
 
-    if (
-      !cell ||
-      typeof cell[parentField] === 'undefined' ||
-      cell[parentField] === null
-    ) {
+    if (!cell || _.isNil(cell[parentField])) {
       return parents;
     }
 
     while (cell) {
-      if (cell[parentField] === null) {
-        if (previousParent !== cell[parentField]) {
-          parents.unshift(cell);
-        }
-
-        break;
+      if (typeof searchingParent === 'undefined') {
+        searchingParent = cell[parentField];
+      } else if (searchingParent === cell[idField]) {
+        parents.unshift(cell);
+        searchingParent = cell[parentField];
       }
-      if (typeof cell[parentField] !== 'undefined') {
-        if (typeof previousParent !== 'undefined' && previousParent !== cell[parentField]) {
-          parents.unshift(cell);
-        }
-      } else {
-        if (typeof previousParent !== 'undefined') {
-          parents.unshift(cell);
-        }
 
+      if (cell[parentField] === null) {
         break;
       }
 
       currentIndex -= 1;
-
-      previousParent = cell[parentField];
       cell = rows[currentIndex];
     }
 
