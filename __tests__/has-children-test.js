@@ -32,6 +32,28 @@ describe('tree.hasChildren', function () {
     expect(hasChildren({ index: 0 })(given)).toEqual(expected);
   });
 
+  it('does not fail with a negative index', function () {
+    const given = [
+      {
+        id: 0,
+        foo: 'bar'
+      },
+      {
+        id: 1,
+        parent: 0,
+        foo: 'foo'
+      },
+      {
+        id: 2,
+        parent: 0,
+        foo: 'barbar'
+      }
+    ];
+    const expected = false;
+
+    expect(hasChildren({ index: -1 })(given)).toEqual(expected);
+  });
+
   it('works with sibling children', function () {
     const given = [
       {

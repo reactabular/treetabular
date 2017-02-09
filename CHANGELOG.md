@@ -1,5 +1,10 @@
 ## treetabular
 
+3.0.1 / 2017-02-09
+==================
+
+  * Fix - Make sure `tree.hasChildren` does not crash if `index` is negative.
+
 3.0.0 / 2017-02-09
 ==================
 
