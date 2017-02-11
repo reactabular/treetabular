@@ -83,7 +83,7 @@ Returns a boolean based on whether or not the row at the given `index` has child
 
 Searches against a tree structure using `operation` while matching against children too. If children are found, associated parents are returned as well. This has been designed to [searchtabular](https://www.npmjs.com/package/searchtabular) `multipleColumns` and `singleColumn`, but as long as the passed operation follows the interface, it should fit in.
 
-> This depends on [resolve.index](https://www.npmjs.com/package/table-resolver#resolveindex)!
+> This depends on [resolve.resolve](https://www.npmjs.com/package/table-resolver#resolveresolve)!
 
 **`tree.wrap = ({ operations: [rows => rows], idField = 'id' }) => (rows) => [<operatedRow>]`**
 
@@ -125,7 +125,7 @@ Allows moving tree rows while `retain`ing given fields at their original rows. Y
 
 Makes it possible to toggle node children through a user interface.
 
-The default implementation of `getIndex(rowData)` depends on [resolve.index](https://www.npmjs.com/package/table-resolver#resolveindex) as it looks for index of the row to toggle based on that. This can be customized through.
+The default implementation of `getIndex(rowData)` depends on [resolve.resolve](https://www.npmjs.com/package/table-resolver#resolveresolve) as it looks for index of the row to toggle based on that. This can be customized through.
 
 ### Helpers
 
@@ -175,12 +175,7 @@ class TreeTable extends React.Component {
     super(props);
 
     const columns = this.getColumns();
-    const rows = resolve.resolve(
-      {
-        columns,
-        method: resolve.index
-      }
-    )(
+    const rows = resolve.resolve({ columns })(
       generateParents(generateRows(100, schema))
     );
 
