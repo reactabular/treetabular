@@ -141,6 +141,7 @@ Basically it converts `[ parent, x, y, z, children ]` into `[ parent, children, 
 /*
 import React from 'react';
 import cloneDeep from 'lodash/cloneDeep';
+import orderBy from 'lodash/orderBy';
 import { compose } from 'redux';
 import * as resolve from 'table-resolver';
 import VisibilityToggles from 'reactabular-visibility-toggles';
@@ -262,7 +263,8 @@ class TreeTable extends React.Component {
         operations: [
           sort.sorter({
             columns,
-            sortingColumns
+            sortingColumns,
+            sort: orderBy
           })
         ]
       }),

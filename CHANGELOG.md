@@ -1,5 +1,10 @@
 ## treetabular
 
+3.1.2 / 2017-02-14
+==================
+
+  * Chore - Update readme example. Now sorting should work.
+
 3.1.1 / 2017-02-11
 ==================
 
