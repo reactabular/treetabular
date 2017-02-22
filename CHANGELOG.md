@@ -1,5 +1,10 @@
 ## treetabular
 
+3.1.3 / 2017-02-22
+==================
+
+  * Chore - Fix `tree.filter` API signature at documentation. #7
+
 3.1.2 / 2017-02-14
 ==================
 

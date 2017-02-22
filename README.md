@@ -53,7 +53,7 @@ Collapses rows by setting `showingChildren` of each row to `false`.
 
 Expands rows by setting `showingChildren` of each row to `true`.
 
-**`tree.filter = ({ fieldName, idField = 'parentId', parentField = 'parent' }) => (rows) => [<filteredRow>]`**
+**`tree.filter = ({ fieldName, idField = 'id', parentField = 'parent' }) => (rows) => [<filteredRow>]`**
 
 Filters the given rows using `fieldName`. This is handy if you want only rows that are visible assuming visibility logic has been defined.
 
