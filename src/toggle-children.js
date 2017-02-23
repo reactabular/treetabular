@@ -1,7 +1,7 @@
 import React from 'react';
+import { get } from 'lodash';
 import getLevel from './get-level';
 import hasChildren from './has-children';
-import {get} from 'lodash';
 
 const toggleChildren = ({
   getIndex = rowData => rowData._index, // Look for index based on convention
