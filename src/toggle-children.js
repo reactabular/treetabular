@@ -40,7 +40,7 @@ const toggleChildren = ({
     const level = getLevel({ index, idField, parentField })(rows);
     const hasParent = level > 0 ? 'has-parent' : '';
 
-    const hasAutomaticIndentation = get(props, 'automaticIndentation', true);
+    const hasAutomaticIndentation = get(props, 'indent', true);
 
     return (
       <div

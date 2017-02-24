@@ -32,7 +32,7 @@ const initializerWithAutomaticIndentation = {
 const initializerWithoutAutomaticIndentation = {
   ...initializerWithAutomaticIndentation,
   props: {
-    automaticIndentation: false
+    indent: false
   }
 };
 
