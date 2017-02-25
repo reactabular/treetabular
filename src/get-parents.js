@@ -23,7 +23,7 @@ function getParents({
         searchingParent = cell[parentField];
       }
 
-      if (cell[parentField] === null) {
+      if ((cell[parentField] === null) || (typeof cell[parentField] === 'undefined')) {
         break;
       }
 
