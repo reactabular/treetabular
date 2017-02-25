@@ -1,5 +1,10 @@
 ## treetabular
 
+3.2.1 / 2017-02-25
+==================
+
+  * Fix - `tree.getParents` allows `undefined` parents now. #10
+
 3.2.0 / 2017-02-25
 ==================
 
