@@ -1,5 +1,10 @@
 ## treetabular
 
+3.2.0 / 2017-02-25
+==================
+
+  * Feature - Add `indent` prop to `tree.toggleChildren`. Set to `false` to default indentation behavior. #8
+
 3.1.3 / 2017-02-22
 ==================
 
