@@ -189,6 +189,32 @@ describe('tree.getParents', function () {
     expect(getParents({ index: 2, idField: 'foo' })(given)).toEqual(expected);
   });
 
+  it('works when parent of parent is undefined', function () {
+    const given = [
+      {
+        foo: 'barbar'
+      },
+      {
+        foo: 'bar',
+        parent: 'barbar'
+      },
+      {
+        foo: 'foo'
+      },
+      {
+        parent: 'foo',
+        foo: 'barbar'
+      }
+    ];
+    const expected = [
+      {
+        foo: 'foo'
+      }
+    ];
+
+    expect(getParents({ index: 3, idField: 'foo' })(given)).toEqual(expected);
+  });
+
   it('allows parent field to be customized', function () {
     const parentField = 'demo';
     const given = [
