@@ -1,4 +1,5 @@
 import React from 'react';
+import { get } from 'lodash';
 import getLevel from './get-level';
 import hasChildren from './has-children';
 
@@ -39,9 +40,11 @@ const toggleChildren = ({
     const level = getLevel({ index, idField, parentField })(rows);
     const hasParent = level > 0 ? 'has-parent' : '';
 
+    const hasAutomaticIndentation = get(props, 'indent', true);
+
     return (
       <div
-        style={{ paddingLeft: `${level}em` }}
+        style={!!hasAutomaticIndentation && { paddingLeft: `${level}em` }}
         // toggling children with a doubleClick would provide better UX
         // since toggling with a click makes it difficult to select each item.
         onDoubleClick={(e) => {
