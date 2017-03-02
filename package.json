@@ -9,7 +9,7 @@
     "test:lint": "eslint . --ext .js --cache",
     "test:watch": "jest --watch --",
     "dist:build": "rimraf ./dist && babel ./src --out-dir ./dist",
-    "prepublish": "npm run build"
+    "prepublish": "npm run dist:build"
   },
   "main": "dist",
   "repository": {
