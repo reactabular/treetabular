@@ -121,7 +121,7 @@ Allows moving tree rows while `retain`ing given fields at their original rows. Y
 
 ### UI
 
-**`tree.toggleChildren = ({ getIndex, getRows, getShowingChildren, toggleShowingChildren, props, idField = 'id', parentField }) => (value, extra) => <React element>`**
+**`tree.toggleChildren = ({ getIndex, getRows, getShowingChildren, toggleShowingChildren, props, idField = 'id', parentField, toggleEvent = 'DoubleClick' }) => (value, extra) => <React element>`**
 
 Makes it possible to toggle node children through a user interface.  
 Pass `"indent":false` inside `props` object if you want to disable automatic indentation.
