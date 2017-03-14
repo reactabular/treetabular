@@ -1,5 +1,10 @@
 ## treetabular
 
+3.3.0 / 2017-03-14
+==================
+
+  * Feature - Expose `toggleChildren` `toggleEvent` as a prop. Defaults to `DoubleClick`. #12
+
 3.2.1 / 2017-02-25
 ==================
 
