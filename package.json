@@ -1,6 +1,6 @@
 {
   "name": "treetabular",
-  "version": "3.2.1",
+  "version": "3.3.0",
   "description": "Tree utilities",
   "scripts": {
     "test:all": "npm test && npm run test:lint",
