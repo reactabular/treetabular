@@ -10,7 +10,10 @@ const toggleChildren = ({
   toggleShowingChildren,
   props,
   idField = 'id',
-  parentField
+  parentField,
+  // Toggling children with a doubleClick would provide better UX
+  // since toggling with a click makes it difficult to select each item
+  toggleEvent = 'DoubleClick'
 } = {}) => {
   if (!getRows) {
     throw new Error('tree.toggleChildren - Missing getRows!');
@@ -42,16 +45,18 @@ const toggleChildren = ({
 
     const hasAutomaticIndentation = get(props, 'indent', true);
 
+    const events = {
+      [`on${toggleEvent}`]: (e) => {
+        toggle(e, index);
+        window.getSelection && window.getSelection().removeAllRanges();
+      }
+    };
+
     return (
       <div
         style={!!hasAutomaticIndentation && { paddingLeft: `${level}em` }}
-        // toggling children with a doubleClick would provide better UX
-        // since toggling with a click makes it difficult to select each item.
-        onDoubleClick={(e) => {
-          toggle(e, index);
-          window.getSelection && window.getSelection().removeAllRanges();
-        }}
         className={`${containsChildren} ${hasParent} ${className || ''}`}
+        {...events}
         {...restProps}
       >
         {containsChildren && <span

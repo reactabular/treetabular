@@ -76,6 +76,25 @@ describe('tree.toggleChildren', function () {
     expect(tree).toMatchSnapshot();
   });
 
+  it('toggleEvent option should change toggle event', function () {
+    const value = 'MNU00900';
+    const extra = {
+      rowIndex: 0,
+      rowData: {
+        _index: 0,
+        id: 'MNU00900',
+        parentId: null
+      }
+    };
+    const tree = toggleChildren({
+      ...initializer,
+      toggleEvent: 'Click'
+    })(value, extra);
+    tree.props.onClick(new Event('onclick'));
+
+    expect(tree).toMatchSnapshot();
+  });
+
   it('clicking root tree indicator works fine', function () {
     const value = 'MNU00900';
     const extra = {
