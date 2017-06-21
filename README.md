@@ -20,13 +20,13 @@ const tree = [
     parent: 123
   },
   {
-    _index: 2, 
+    _index: 2,
     id: 789,
     name: 'Yet Another',
     parent: 123
   },
   {
-    _index: 3,  
+    _index: 3,
     id: 532,
     name: 'Foobar'
   }
@@ -127,7 +127,7 @@ Allows moving tree rows while `retain`ing given fields at their original rows. Y
 
 **`tree.toggleChildren = ({ getIndex, getRows, getShowingChildren, toggleShowingChildren, props, idField = 'id', parentField, toggleEvent = 'DoubleClick' }) => (value, extra) => <React element>`**
 
-Makes it possible to toggle node children through a user interface.  
+Makes it possible to toggle node children through a user interface.
 Pass `"indent":false` inside `props` object if you want to disable automatic indentation.
 
 The default implementation of `getIndex(rowData)` depends on [resolve.resolve](https://www.npmjs.com/package/table-resolver#resolveresolve) as it looks for index of the row to toggle based on that. This can be customized through.
