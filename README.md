@@ -130,7 +130,7 @@ Allows moving tree rows while `retain`ing given fields at their original rows. Y
 Makes it possible to toggle node children through a user interface.
 Pass `"indent":false` inside `props` object if you want to disable automatic indentation.
 
-The default implementation of `getIndex(rowData)` depends on [resolve.resolve](https://www.npmjs.com/package/table-resolver#resolveresolve) as it looks for index of the row to toggle based on that. This can be customized through.
+The default implementation of `getIndex(rowData)` depends on [resolve.resolve](https://www.npmjs.com/package/table-resolver#resolveresolve) as it looks for index of the row to toggle based on that. This can be customized though.
 
 ### Helpers
 
