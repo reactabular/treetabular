@@ -9,20 +9,24 @@ To achieve this, `treetabular` relies on a flat structure that contains the hier
 ```javascript
 const tree = [
   {
+    _index: 0,
     id: 123,
     name: 'Demo'
   },
   {
+    _index: 1,
     id: 456,
     name: 'Another',
     parent: 123
   },
   {
+    _index: 2, 
     id: 789,
     name: 'Yet Another',
     parent: 123
   },
   {
+    _index: 3,  
     id: 532,
     name: 'Foobar'
   }
