@@ -527,4 +527,95 @@ describe('fixOrder', () => {
 
     expect(fixOrder()(reversedRows)).toEqual(reverse(reversedRows));
   });
+
+  it('works with deep nesting', () => {
+    const rows = [
+      {
+        "id": "D1",
+        "parent": "C2"
+      },
+      {
+        "id": "A1",
+        "parent": null
+      },
+      {
+        "id": "D2",
+        "parent": "C2"
+      },
+      {
+        "id": "D3",
+        "parent": "C1"
+      },
+      {
+        "id": "D4",
+        "parent": "C2"
+      },
+      {
+        "id": "C1",
+        "parent": "B1"
+      },
+      {
+        "id": "D5",
+        "parent": "C1"
+      },
+      {
+        "id": "D6",
+        "parent": "C2"
+      },
+      {
+        "id": "C2",
+        "parent": "B1"
+      },
+      {
+        "id": "B1",
+        "parent": "A1"
+      }
+    ];
+
+    const expectedRows = [
+      {
+        "id": "A1",
+        "parent": null
+      },
+      {
+        "id": "B1",
+        "parent": "A1"
+      },
+      {
+        "id": "C1",
+        "parent": "B1"
+      },
+      {
+        "id": "D3",
+        "parent": "C1"
+      },
+      {
+        "id": "D5",
+        "parent": "C1"
+      },
+      {
+        "id": "C2",
+        "parent": "B1"
+      },
+      {
+        "id": "D1",
+        "parent": "C2"
+      },
+      {
+        "id": "D2",
+        "parent": "C2"
+      },
+      {
+        "id": "D4",
+        "parent": "C2"
+      },
+      {
+        "id": "D6",
+        "parent": "C2"
+      }
+    ]
+
+    expect(fixOrder()(rows)).toEqual(expectedRows);
+  });
 });
+
