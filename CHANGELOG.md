@@ -1,5 +1,10 @@
 ## treetabular
 
+3.4.0 / 2017-09-13
+==================
+
+  * Fix - `tree.fixOrder` works with deeply nested data now. #13, #20
+
 3.3.0 / 2017-03-14
 ==================
 
