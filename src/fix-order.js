@@ -31,12 +31,25 @@ const fixOrder = ({
   // groups all children per parent into a object,
   // which looks like that:
   // { parent_id1 : [children of parent id1], parent_id2: [... ] }
-  const childrenPerParent = _.groupBy(children, x => x[parentField]);
+  let childrenPerParent = _.groupBy(children, x => x[parentField]);
 
   // removes all children from rows so we can start putting them
   // into right place
   const rowsWithoutChildren = _.differenceWith(rows, children, _.isEqual);
+  let childrenCount = _.keys(childrenPerParent).length;
+  let prevChildrenCount;
+  do {
+    prevChildrenCount = childrenCount;
+    childrenPerParent = attachChildren(rowsWithoutChildren, childrenPerParent, idField);
+    childrenCount = _.keys(childrenPerParent).length;
+  }
+  while (childrenCount < prevChildrenCount);
 
+  return rowsWithoutChildren;
+};
+
+function attachChildren(rowsWithoutChildren, childrenPerParent, idField) {
+  const remainingChildrenPerParent = childrenPerParent;
   _.forOwn(childrenPerParent, (childrenFromParent, parentId) => {
     const parentPosition = _.findIndex(rowsWithoutChildren, (x) => {
       const hasId = !_.isNil(x[idField]);
@@ -44,10 +57,12 @@ const fixOrder = ({
       return hasId && matchesParentId;
     });
     // puts children right after their parent so correct order will be kept
-    rowsWithoutChildren.splice(parentPosition + 1, 0, ...childrenFromParent);
+    if (parentPosition !== -1) {
+      rowsWithoutChildren.splice(parentPosition + 1, 0, ...childrenFromParent);
+      delete remainingChildrenPerParent[parentId];
+    }
   });
-
-  return rowsWithoutChildren;
-};
+  return remainingChildrenPerParent;
+}
 
 export default fixOrder;
