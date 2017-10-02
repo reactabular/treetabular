@@ -67,12 +67,11 @@
     "git-prepush-hook": "^1.0.2",
     "jest": "^18.1.0",
     "lodash": "^4.17.4",
-    "prop-types": "^15.5.10",
-    "react": "^15.4.2",
-    "react-addons-test-utils": "^15.4.2",
-    "react-dnd": "^2.2.3",
-    "react-dom": "^15.4.2",
-    "reactabular-dnd": "^8.6.0",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "react-dnd": "^2.5.3",
+    "react-dom": "^16.0.0",
+    "reactabular-dnd": "^8.9.0",
     "redux": "^3.6.0",
     "rimraf": "^2.5.4",
     "searchtabular": "^1.3.2",
@@ -80,7 +79,7 @@
   },
   "peerDependencies": {
     "lodash": ">= 4.0.0 < 5.0.0",
-    "react": ">= 15.0.0 < 16.0.0",
+    "react": ">= 15.0.0 < 17.0.0",
     "redux": ">= 3.0.0 < 4.0.0"
   },
   "pre-push": [
