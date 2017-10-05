@@ -2916,9 +2916,9 @@ react@^16.0.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-reactabular-dnd@^8.9.0:
-  version "8.9.0"
-  resolved "https://registry.yarnpkg.com/reactabular-dnd/-/reactabular-dnd-8.9.0.tgz#0792de4ada361f94258f8a6a1a0d6cbd83d2a5a0"
+reactabular-dnd@^8.12.0:
+  version "8.12.0"
+  resolved "https://registry.yarnpkg.com/reactabular-dnd/-/reactabular-dnd-8.12.0.tgz#74ee22be0bed5303f85a7325917035b4aa1c9b7a"
 
 read-pkg-up@^1.0.1:
   version "1.0.1"
