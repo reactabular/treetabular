@@ -52,9 +52,11 @@ const toggleChildren = ({
       }
     };
 
+    const style = hasAutomaticIndentation ? { paddingLeft: `${level}em` } : {};
+
     return (
       <div
-        style={!!hasAutomaticIndentation && { paddingLeft: `${level}em` }}
+        style={style}
         className={`${containsChildren} ${hasParent} ${className || ''}`}
         {...events}
         {...restProps}
