@@ -1,5 +1,10 @@
 ## treetabular
 
+3.5.2 / 2019-01-02
+==================
+
+  * Fix - Fix JSX error when `hasAutomaticIndentation` is false #23
+
 3.5.1 / 2018-06-25
 ==================
 
