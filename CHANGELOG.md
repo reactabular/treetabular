@@ -1,5 +1,10 @@
 ## treetabular
 
+3.6.0 / 2020-01-27
+==================
+
+  * Feature - Improve filtering performance #24
+
 3.5.2 / 2019-01-02
 ==================
 
