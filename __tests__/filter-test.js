@@ -33,6 +33,11 @@ describe('tree.filter', function () {
         id: 234,
         parent: 123,
         foo: 'foo'
+      },
+      {
+        id: 567,
+        parent: 123,
+        foo: 'foo2'
       }
     ];
     const expected = [
