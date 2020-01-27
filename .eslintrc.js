@@ -23,6 +23,8 @@ module.exports = {
     "react/sort-comp": 0, // personal preference
     "react/no-multi-comp": 0, // personal preference
     "react/jsx-filename-extension": 0, // personal preference
+    "react/jsx-props-no-spreading": 0, // personal preference
+    "jsx-a11y/click-events-have-key-events": 0, // personal preference
     "jsx-a11y/no-static-element-interactions": 0 // personal preference
   }
 };

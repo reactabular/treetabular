@@ -29,7 +29,7 @@ function searchTree({
         const parents = getParents({ index: row._index, idField, parentField })(rows);
 
         return parents.concat(row).concat(children);
-      }).filter(a => a)
+      }).filter((a) => a)
     ));
   };
 }

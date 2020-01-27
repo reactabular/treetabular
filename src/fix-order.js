@@ -31,7 +31,7 @@ const fixOrder = ({
   // groups all children per parent into a object,
   // which looks like that:
   // { parent_id1 : [children of parent id1], parent_id2: [... ] }
-  let childrenPerParent = _.groupBy(children, x => x[parentField]);
+  let childrenPerParent = _.groupBy(children, (x) => x[parentField]);
 
   // removes all children from rows so we can start putting them
   // into right place

@@ -1,4 +1,6 @@
-import { cloneDeep, find, isArray, omit } from 'lodash';
+import {
+  cloneDeep, find, isArray, omit
+} from 'lodash';
 
 const pack = ({
   idField = 'id',

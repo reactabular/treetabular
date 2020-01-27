@@ -27,7 +27,7 @@ const filterTree = ({
 
     // if all the rows parents are showing then we know that the row should should
     const rowShouldShow = parents.filter(
-      parent => parent[fieldName]
+      (parent) => parent[fieldName]
     ).length === parents.length;
 
     parentCache[row[parentField]] = rowShouldShow;

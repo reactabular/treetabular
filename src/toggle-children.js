@@ -4,7 +4,7 @@ import getLevel from './get-level';
 import hasChildren from './has-children';
 
 const toggleChildren = ({
-  getIndex = rowData => rowData._index, // Look for index based on convention
+  getIndex = (rowData) => rowData._index, // Look for index based on convention
   getRows,
   getShowingChildren,
   toggleShowingChildren,
@@ -61,10 +61,12 @@ const toggleChildren = ({
         {...events}
         {...restProps}
       >
-        {containsChildren && <span
+        {containsChildren && (
+        <span
           className={showingChildren ? 'show-less' : 'show-more'}
-          onClick={e => toggle(e, index)}
-        />}
+          onClick={(e) => toggle(e, index)}
+        />
+        )}
         {value}
       </div>
     );

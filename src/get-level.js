@@ -4,7 +4,7 @@ const getLevel = ({
   index,
   idField = 'id',
   parentField = 'parent'
-} = {}) => rows => (
+} = {}) => (rows) => (
   getParents({ index, idField, parentField })(rows).length
 );
 

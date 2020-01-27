@@ -618,4 +618,3 @@ describe('fixOrder', () => {
     expect(fixOrder()(rows)).toEqual(expectedRows);
   });
 });
-
